@@ -1,0 +1,1539 @@
+{
+  "data": {
+    "id": "f60d07422a50e62bf3b92ab406b83b26fcd203a1e77ae2a9a6c239766f65eb8f",
+    "type": "file",
+    "links": {
+      "self": "https://www.virustotal.com/api/v3/files/f60d07422a50e62bf3b92ab406b83b26fcd203a1e77ae2a9a6c239766f65eb8f"
+    },
+    "attributes": {
+      "vhash": "025046651d6560b8z201cpz31zd025z",
+      "filecondis": {
+        "raw_md5": "2c6fe47f9ee28c63ba899e9fc4a37f03",
+        "dhash": "78783c1c0c310000"
+      },
+      "size": 282624,
+      "first_submission_date": 1513187806,
+      "unique_sources": 88,
+      "crowdsourced_ids_results": [
+        {
+          "rule_category": "Attempted Administrator Privilege Gain",
+          "alert_severity": "high",
+          "rule_msg": "ATTACK [PTsecurity] Unimplemented Trans2 Sub-Command code. Possible ETERNALBLUE (WannaCry, Petya) tool",
+          "rule_raw": "alert smb any any -> $HOME_NET any (msg: \"ATTACK [PTsecurity] Unimplemented Trans2 Sub-Command code. Possible ETERNALBLUE (WannaCry, Petya) tool\"; flow: to_server, established; content: \"|FF|SMB2|00 00 00 00|\"; depth: 9; offset: 4; byte_test: 2, >, 0x0008, 52, relative, little; pcre: \"/\\xFFSMB2\\x00\\x00\\x00\\x00.{52}(?:\\x04|\\x09|\\x0A|\\x0B|\\x0C|\\x0E|\\x11)\\x00/s\"; flowbits: set, SMB.Trans2.SubCommand.Unimplemented; reference: url, msdn.microsoft.com/en-us/library/ee441654.aspx; classtype: attempted-admin; reference: url, github.com/ptresearch/AttackDetection; sid: 10001254; rev: 2;)",
+          "rule_url": "https://github.com/ptresearch/AttackDetection/",
+          "rule_source": "Positive Technologies: PT Open Ruleset",
+          "rule_references": [
+            "https://msdn.microsoft.com/en-us/library/ee441654.aspx",
+            "https://github.com/ptresearch/AttackDetection"
+          ],
+          "rule_id": "1:10001254"
+        },
+        {
+          "rule_category": "Attempted Administrator Privilege Gain",
+          "alert_severity": "high",
+          "rule_msg": "ATTACK [PTsecurity] Metasploit MS17-010 ETERNALBLUE Exploitation (CVE-2017-0144)",
+          "rule_raw": "alert smb any any -> $HOME_NET any (msg: \"ATTACK [PTsecurity] Metasploit MS17-010 ETERNALBLUE Exploitation (CVE-2017-0144)\"; flow: established, to_server, no_stream; content: \"|FF|SMB|33|\"; byte_test: 2, >, 61000, 42, relative, little; flowbits: isset, SMB.NTTrans.Req; flowbits: isnotset, SMB.NTTrans2.Req; reference: cve, 2017-0144; reference: url, github.com/rapid7/metasploit-framework/commit/c9473f8cbc147fe6ff7fe27862fd3d1e9f27c4f5; classtype: attempted-admin; reference: url, github.com/ptresearch/AttackDetection; sid: 10001726; rev: 1; )",
+          "rule_url": "https://github.com/ptresearch/AttackDetection/",
+          "rule_source": "Positive Technologies: PT Open Ruleset",
+          "rule_references": [
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=2017-0144",
+            "https://github.com/rapid7/metasploit-framework/commit/c9473f8cbc147fe6ff7fe27862fd3d1e9f27c4f5",
+            "https://github.com/ptresearch/AttackDetection"
+          ],
+          "rule_id": "1:10001726"
+        },
+        {
+          "rule_category": "A Network Trojan was detected",
+          "alert_severity": "high",
+          "rule_msg": "ET EXPLOIT Possible ETERNALBLUE MS17-010 Heap Spray",
+          "rule_raw": "alert smb any any -> $HOME_NET any (msg:\"ET EXPLOIT Possible ETERNALBLUE MS17-010 Heap Spray\"; flow:to_server,established; content:\"|ff|SMB|33 00 00 00 00 18 07 c0 00 00 00 00 00 00 00 00 00 00 00 00 00 08 ff fe 00 08|\"; offset:4; depth:30; fast_pattern; content:\"|00 09 00 00 00 10|\"; distance:1; within:6; content:\"|00 00 00 00 00 00 00 10|\"; within:8; content:\"|00 00 00 10|\"; distance:4; within:4; pcre:\"/^[a-zA-Z0-9+/]{1000,}/R\"; threshold: type both, track by_src, count 3, seconds 30; classtype:trojan-activity; sid:2024217; rev:4; metadata:attack_target SMB_Server, created_at 2017_04_17, deployment Internal, former_category EXPLOIT, signature_severity Critical, updated_at 2022_03_17;)",
+          "rule_url": "https://rules.emergingthreats.net/",
+          "rule_source": "Proofpoint Emerging Threats Open",
+          "rule_id": "1:2024217"
+        },
+        {
+          "rule_category": "A Network Trojan was detected",
+          "alert_severity": "high",
+          "rule_msg": "ET EXPLOIT Possible ETERNALBLUE MS17-010 Echo Response",
+          "rule_raw": "alert smb $HOME_NET any -> any any (msg:\"ET EXPLOIT Possible ETERNALBLUE MS17-010 Echo Response\"; flow:from_server,established; content:\"|00 00 00 31 ff|SMB|2b 00 00 00 00 98 07 c0|\"; depth:16; fast_pattern; content:\"|4a 6c 4a 6d 49 68 43 6c 42 73 72 00|\"; distance:0; flowbits:isset,ET.ETERNALBLUE; classtype:trojan-activity; sid:2024218; rev:2; metadata:attack_target SMB_Server, created_at 2017_04_17, deployment Internal, former_category EXPLOIT, signature_severity Critical, updated_at 2017_11_27;)",
+          "rule_url": "https://rules.emergingthreats.net/",
+          "rule_source": "Proofpoint Emerging Threats Open",
+          "rule_id": "1:2024218"
+        },
+        {
+          "rule_category": "Attempted Administrator Privilege Gain",
+          "alert_severity": "high",
+          "rule_msg": "ET EXPLOIT ETERNALBLUE Exploit M2 MS17-010",
+          "rule_raw": "alert tcp any any -> any 445 (msg:\"ET EXPLOIT ETERNALBLUE Exploit M2 MS17-010\"; flow:established,to_server; content:\"|8000a80000000000000000000000000000000000ffff000000000000ffff0000000000000000000000000000000000000000000000f1dfff000000000000000020f0dfff00f1dfffffffffff600004100000000080efdfff|\"; reference:cve,CVE-2017-0143; classtype:attempted-admin; sid:2024297; rev:2; metadata:affected_product Windows_XP_Vista_7_8_10_Server_32_64_Bit, attack_target Client_Endpoint, created_at 2017_05_16, deployment Perimeter, former_category CURRENT_EVENTS, performance_impact Low, signature_severity Major, updated_at 2017_07_06;)",
+          "rule_url": "https://rules.emergingthreats.net/",
+          "rule_source": "Proofpoint Emerging Threats Open",
+          "rule_references": [
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-0143"
+          ],
+          "rule_id": "1:2024297"
+        },
+        {
+          "rule_category": "A Network Trojan was detected",
+          "alert_severity": "high",
+          "rule_msg": "ET EXPLOIT Possible ETERNALBLUE Probe MS17-010 (MSF style)",
+          "rule_raw": "alert smb any any -> $HOME_NET any (msg:\"ET EXPLOIT Possible ETERNALBLUE Probe MS17-010 (MSF style)\"; flow:to_server,established; content:\"|ff|SMB|25 00 00 00 00 18 01 28|\"; offset:4; depth:12; content:\"|00 00 00 00 00 00 00 00 00 00|\"; distance:2; within:10; content:\"|23 00 00 00 07 00 5c 50 49 50 45 5c 00|\"; fast_pattern; endswith; threshold: type limit, track by_src, count 1, seconds 30; reference:url,github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/smb/smb_ms17_010.rb; classtype:trojan-activity; sid:2025649; rev:3; metadata:affected_product Windows_XP_Vista_7_8_10_Server_32_64_Bit, attack_target Client_Endpoint, created_at 2018_07_11, deployment Internal, former_category EXPLOIT, signature_severity Major, tag Metasploit, tag ETERNALBLUE, updated_at 2019_09_28;)",
+          "rule_url": "https://rules.emergingthreats.net/",
+          "rule_source": "Proofpoint Emerging Threats Open",
+          "rule_references": [
+            "https://github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/smb/smb_ms17_010.rb"
+          ],
+          "rule_id": "1:2025649"
+        },
+        {
+          "rule_category": "A Network Trojan was detected",
+          "alert_severity": "high",
+          "rule_msg": "ET EXPLOIT ETERNALBLUE Probe Vulnerable System Response MS17-010",
+          "rule_raw": "alert smb $HOME_NET any -> any any (msg:\"ET EXPLOIT ETERNALBLUE Probe Vulnerable System Response MS17-010\"; flow:from_server,established; content:\"|ff|SMB|25 05 02 00 c0 98 01|\"; offset:4; depth:11; content:\"|00 00 00 00 00 00 00 00 00 00|\"; distance:3; within:10; content:\"|00 00 00|\"; distance:8; within:3; endswith; threshold: type limit, track by_src, count 1, seconds 30; reference:url,github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/smb/smb_ms17_010.rb; classtype:trojan-activity; sid:2025650; rev:3; metadata:affected_product Windows_XP_Vista_7_8_10_Server_32_64_Bit, attack_target Client_Endpoint, created_at 2018_07_11, deployment Internal, former_category EXPLOIT, signature_severity Major, tag Metasploit, tag ETERNALBLUE, updated_at 2019_09_28;)",
+          "rule_url": "https://rules.emergingthreats.net/",
+          "rule_source": "Proofpoint Emerging Threats Open",
+          "rule_references": [
+            "https://github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/smb/smb_ms17_010.rb"
+          ],
+          "rule_id": "1:2025650"
+        },
+        {
+          "rule_category": "A Network Trojan was detected",
+          "alert_severity": "high",
+          "rule_msg": "ET EXPLOIT Possible ETERNALBLUE Probe MS17-010 (Generic Flags)",
+          "rule_raw": "alert smb any any -> $HOME_NET any (msg:\"ET EXPLOIT Possible ETERNALBLUE Probe MS17-010 (Generic Flags)\"; flow:to_server,established; content:\"|ff|SMB|25 00 00 00 00|\"; offset:4; depth:9; content:\"|00 00 00 00 00 00 00 00 00 00|\"; distance:5; within:10; content:\"|23 00 00 00 07 00 5c 50 49 50 45 5c 00|\"; fast_pattern; endswith; threshold: type limit, track by_src, count 1, seconds 30; reference:url,github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/smb/smb_ms17_010.rb; classtype:trojan-activity; sid:2025992; rev:2; metadata:affected_product Windows_XP_Vista_7_8_10_Server_32_64_Bit, attack_target Client_Endpoint, created_at 2018_08_15, deployment Perimeter, former_category EXPLOIT, malware_family ETERNALBLUE, signature_severity Major, updated_at 2019_09_28;)",
+          "rule_url": "https://rules.emergingthreats.net/",
+          "rule_source": "Proofpoint Emerging Threats Open",
+          "rule_references": [
+            "https://github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/smb/smb_ms17_010.rb"
+          ],
+          "rule_id": "1:2025992"
+        },
+        {
+          "rule_category": "attempted-admin",
+          "alert_severity": "high",
+          "rule_msg": "OS-WINDOWS Microsoft Windows SMB remote code execution attempt",
+          "rule_raw": "alert tcp any any -> $HOME_NET 445 ( msg:\"OS-WINDOWS Microsoft Windows SMB remote code execution attempt\"; flow:to_server,established; content:\"|FF|SMB3|00 00 00 00|\",depth 9,offset 4; byte_extract:2,26,TotalDataCount,relative,little; byte_test:2,>,TotalDataCount,20,relative,little; metadata:policy balanced-ips drop,policy connectivity-ips drop,policy max-detect-ips drop,policy security-ips drop,ruleset community; service:netbios-ssn; reference:cve,2017-0144; reference:cve,2017-0146; reference:url,blog.talosintelligence.com/2017/05/wannacry.html; reference:url,isc.sans.edu/forums/diary/ETERNALBLUE+Possible+Window+SMB+Buffer+Overflow+0Day/22304/; reference:url,technet.microsoft.com/en-us/security/bulletin/MS17-010; classtype:attempted-admin; sid:41978; rev:5; )",
+          "rule_url": "https://www.snort.org/downloads/#rule-downloads",
+          "rule_source": "Snort registered user ruleset",
+          "rule_references": [
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=2017-0144",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=2017-0146",
+            "https://blog.talosintelligence.com/2017/05/wannacry.html",
+            "https://isc.sans.edu/forums/diary/ETERNALBLUE+Possible+Window+SMB+Buffer+Overflow+0Day/22304/",
+            "https://technet.microsoft.com/en-us/security/bulletin/MS17-010"
+          ],
+          "rule_id": "1:41978"
+        },
+        {
+          "rule_category": "attempted-admin",
+          "alert_severity": "high",
+          "rule_msg": "OS-WINDOWS Microsoft Windows SMB remote code execution attempt",
+          "rule_raw": "alert tcp any any -> $HOME_NET 445 ( msg:\"OS-WINDOWS Microsoft Windows SMB remote code execution attempt\"; flow:to_server,established; content:\"|FF|SMB|A0 00 00 00 00|\",depth 9,offset 4; content:\"|01 00 00 00 00|\",within 5,distance 59; byte_test:4,>,0x8150,-33,relative,little; metadata:policy balanced-ips drop,policy connectivity-ips drop,policy max-detect-ips drop,policy security-ips drop,ruleset community; service:netbios-ssn; reference:cve,2017-0144; reference:cve,2017-0146; reference:url,isc.sans.edu/forums/diary/ETERNALBLUE+Possible+Window+SMB+Buffer+Overflow+0Day/22304/; reference:url,technet.microsoft.com/en-us/security/bulletin/MS17-010; classtype:attempted-admin; sid:42944; rev:2; )",
+          "rule_url": "https://www.snort.org/downloads/#rule-downloads",
+          "rule_source": "Snort registered user ruleset",
+          "rule_references": [
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=2017-0144",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=2017-0146",
+            "https://isc.sans.edu/forums/diary/ETERNALBLUE+Possible+Window+SMB+Buffer+Overflow+0Day/22304/",
+            "https://technet.microsoft.com/en-us/security/bulletin/MS17-010"
+          ],
+          "rule_id": "1:42944"
+        },
+        {
+          "rule_category": "attempted-recon",
+          "alert_severity": "medium",
+          "rule_msg": "(icmp4) ICMP destination unreachable communication administratively prohibited",
+          "rule_raw": "alert ( gid:116; sid:441; rev:2; msg:\"(icmp4) ICMP destination unreachable communication administratively prohibited\"; metadata: rule-type decode; classtype:attempted-recon;)",
+          "alert_context": [
+            {
+              "src_ip": "89.75.3.189"
+            }
+          ],
+          "rule_url": "https://www.snort.org/downloads/#rule-downloads",
+          "rule_source": "Snort registered user ruleset",
+          "rule_id": "116:441"
+        },
+        {
+          "rule_category": "attempted-recon",
+          "alert_severity": "medium",
+          "rule_msg": "(port_scan) TCP filtered portsweep",
+          "rule_raw": "alert ( gid:122; sid:7; rev:2; msg:\"(port_scan) TCP filtered portsweep\"; metadata: rule-type preproc; classtype:attempted-recon;)",
+          "alert_context": [
+            {
+              "dest_port": 445,
+              "dest_ip": "30.127.75.47"
+            }
+          ],
+          "rule_url": "https://www.snort.org/downloads/#rule-downloads",
+          "rule_source": "Snort registered user ruleset",
+          "rule_id": "122:7"
+        },
+        {
+          "rule_category": "bad-unknown",
+          "alert_severity": "medium",
+          "rule_msg": "(dce_smb) SMB - bad word count or structure size",
+          "rule_raw": "alert ( gid:133; sid:5; rev:2; msg:\"(dce_smb) SMB - bad word count or structure size\"; metadata: policy max-detect-ips drop, rule-type preproc; reference:url,msdn.microsoft.com/en-us/library/cc201989.aspx; service:dcerpc; classtype:bad-unknown;)",
+          "rule_url": "https://www.snort.org/downloads/#rule-downloads",
+          "rule_source": "Snort registered user ruleset",
+          "rule_references": [
+            "https://msdn.microsoft.com/en-us/library/cc201989.aspx"
+          ],
+          "rule_id": "133:5"
+        },
+        {
+          "rule_category": "bad-unknown",
+          "alert_severity": "medium",
+          "rule_msg": "(dce_smb) SMB - unusual command used",
+          "rule_raw": "alert ( gid:133; sid:54; rev:2; msg:\"(dce_smb) SMB - unusual command used\"; metadata: rule-type preproc; reference:url,msdn.microsoft.com/en-us/library/cc201989.aspx; service:dcerpc; classtype:bad-unknown;)",
+          "rule_url": "https://www.snort.org/downloads/#rule-downloads",
+          "rule_source": "Snort registered user ruleset",
+          "rule_references": [
+            "https://msdn.microsoft.com/en-us/library/cc201989.aspx"
+          ],
+          "rule_id": "133:54"
+        },
+        {
+          "rule_category": "bad-unknown",
+          "alert_severity": "medium",
+          "rule_msg": "(dce_smb) SMB - invalid setup count for command",
+          "rule_raw": "alert ( gid:133; sid:55; rev:2; msg:\"(dce_smb) SMB - invalid setup count for command\"; metadata: rule-type preproc; reference:url,msdn.microsoft.com/en-us/library/cc201989.aspx; service:dcerpc; classtype:bad-unknown;)",
+          "rule_url": "https://www.snort.org/downloads/#rule-downloads",
+          "rule_source": "Snort registered user ruleset",
+          "rule_references": [
+            "https://msdn.microsoft.com/en-us/library/cc201989.aspx"
+          ],
+          "rule_id": "133:55"
+        },
+        {
+          "rule_category": "Misc Attack",
+          "alert_severity": "medium",
+          "rule_msg": "ET DROP Spamhaus DROP Listed Traffic Inbound group 12",
+          "rule_raw": "alert ip [146.202.0.0/16,146.252.0.0/16,147.7.0.0/16,147.16.0.0/14,147.78.224.0/22,147.119.0.0/16,148.148.0.0/16,148.154.0.0/16,148.178.0.0/16,148.185.0.0/16,148.248.0.0/16,149.207.0.0/16,150.10.0.0/16,150.22.128.0/17,150.25.0.0/16,150.40.0.0/16,150.121.0.0/16,150.129.212.0/22,150.129.228.0/22,150.141.0.0/16] any -> $HOME_NET any (msg:\"ET DROP Spamhaus DROP Listed Traffic Inbound group 12\"; reference:url,www.spamhaus.org/drop/drop.lasso; threshold: type limit, track by_src, seconds 3600, count 1; classtype:misc-attack; flowbits:set,ET.Evil; flowbits:set,ET.DROPIP; sid:2400011; rev:3460; metadata:affected_product Any, attack_target Any, deployment Perimeter, tag Dshield, signature_severity Minor, created_at 2010_12_30, updated_at 2022_12_07;)",
+          "alert_context": [
+            {
+              "src_ip": "148.154.83.122",
+              "src_port": 445
+            }
+          ],
+          "rule_url": "https://rules.emergingthreats.net/",
+          "rule_source": "Proofpoint Emerging Threats Open",
+          "rule_references": [
+            "https://www.spamhaus.org/drop/drop.lasso"
+          ],
+          "rule_id": "1:2400011"
+        },
+        {
+          "rule_category": "Misc Attack",
+          "alert_severity": "medium",
+          "rule_msg": "ET DROP Spamhaus DROP Listed Traffic Inbound group 14",
+          "rule_raw": "alert ip [159.229.0.0/16,160.14.0.0/16,160.21.0.0/16,160.115.0.0/16,160.116.0.0/16,160.117.0.0/16,160.121.0.0/16,160.122.0.0/16,160.180.0.0/16,160.188.0.0/16,160.200.0.0/16,160.235.0.0/16,160.240.0.0/16,161.0.0.0/19,161.0.68.0/22,161.1.0.0/16,162.208.124.0/22,162.222.128.0/21,162.249.20.0/22,163.47.19.0/24] any -> $HOME_NET any (msg:\"ET DROP Spamhaus DROP Listed Traffic Inbound group 14\"; reference:url,www.spamhaus.org/drop/drop.lasso; threshold: type limit, track by_src, seconds 3600, count 1; classtype:misc-attack; flowbits:set,ET.Evil; flowbits:set,ET.DROPIP; sid:2400013; rev:3460; metadata:affected_product Any, attack_target Any, deployment Perimeter, tag Dshield, signature_severity Minor, created_at 2010_12_30, updated_at 2022_12_07;)",
+          "alert_context": [
+            {
+              "src_ip": "160.121.237.187",
+              "src_port": 445
+            }
+          ],
+          "rule_url": "https://rules.emergingthreats.net/",
+          "rule_source": "Proofpoint Emerging Threats Open",
+          "rule_references": [
+            "https://www.spamhaus.org/drop/drop.lasso"
+          ],
+          "rule_id": "1:2400013"
+        },
+        {
+          "rule_category": "Misc Attack",
+          "alert_severity": "medium",
+          "rule_msg": "ET DROP Spamhaus DROP Listed Traffic Inbound group 16",
+          "rule_raw": "alert ip [168.80.0.0/15,168.151.0.0/22,168.151.4.0/23,168.151.6.0/24,168.151.9.0/24,168.151.11.0/24,168.151.16.0/24,168.151.21.0/24,168.151.28.0/24,168.151.32.0/21,168.151.43.0/24,168.151.44.0/22,168.151.48.0/22,168.151.52.0/23,168.151.54.0/24,168.151.56.0/21,168.151.64.0/22,168.151.68.0/23,168.151.72.0/21,168.151.80.0/20] any -> $HOME_NET any (msg:\"ET DROP Spamhaus DROP Listed Traffic Inbound group 16\"; reference:url,www.spamhaus.org/drop/drop.lasso; threshold: type limit, track by_src, seconds 3600, count 1; classtype:misc-attack; flowbits:set,ET.Evil; flowbits:set,ET.DROPIP; sid:2400015; rev:3460; metadata:affected_product Any, attack_target Any, deployment Perimeter, tag Dshield, signature_severity Minor, created_at 2010_12_30, updated_at 2022_12_07;)",
+          "alert_context": [
+            {
+              "src_ip": "168.81.80.180",
+              "src_port": 445
+            }
+          ],
+          "rule_url": "https://rules.emergingthreats.net/",
+          "rule_source": "Proofpoint Emerging Threats Open",
+          "rule_references": [
+            "https://www.spamhaus.org/drop/drop.lasso"
+          ],
+          "rule_id": "1:2400015"
+        },
+        {
+          "rule_category": "Misc Attack",
+          "alert_severity": "medium",
+          "rule_msg": "ET DROP Spamhaus DROP Listed Traffic Inbound group 18",
+          "rule_raw": "alert ip [169.129.0.0/16,169.136.224.0/19,169.239.152.0/22,169.245.0.0/16,169.246.0.0/15,169.248.0.0/14,170.67.0.0/16,170.83.232.0/22,170.113.0.0/16,170.179.0.0/16,170.244.40.0/22,170.244.240.0/22,170.247.220.0/22,171.26.0.0/16,175.103.64.0/18,176.126.192.0/23,176.126.194.0/24,176.223.116.0/23,176.223.118.0/24,176.223.160.0/23] any -> $HOME_NET any (msg:\"ET DROP Spamhaus DROP Listed Traffic Inbound group 18\"; reference:url,www.spamhaus.org/drop/drop.lasso; threshold: type limit, track by_src, seconds 3600, count 1; classtype:misc-attack; flowbits:set,ET.Evil; flowbits:set,ET.DROPIP; sid:2400017; rev:3460; metadata:affected_product Any, attack_target Any, deployment Perimeter, tag Dshield, signature_severity Minor, created_at 2010_12_30, updated_at 2022_12_07;)",
+          "alert_context": [
+            {
+              "src_ip": "169.247.253.8",
+              "src_port": 445
+            }
+          ],
+          "rule_url": "https://rules.emergingthreats.net/",
+          "rule_source": "Proofpoint Emerging Threats Open",
+          "rule_references": [
+            "https://www.spamhaus.org/drop/drop.lasso"
+          ],
+          "rule_id": "1:2400017"
+        },
+        {
+          "rule_category": "attempted-recon",
+          "alert_severity": "medium",
+          "rule_msg": "OS-WINDOWS Microsoft Windows SMB anonymous session IPC share access attempt",
+          "rule_raw": "alert tcp any any -> $HOME_NET 445 ( msg:\"OS-WINDOWS Microsoft Windows SMB anonymous session IPC share access attempt\"; flow:to_server,established; flowbits:isset,smb.null_session; content:\"|FF|SMB|75 00 00 00 00|\",depth 9,offset 4; content:\"|00 5C 00|I|00|P|00|C|00|$|00 00 00|\",fast_pattern,nocase; metadata:policy max-detect-ips drop,policy security-ips drop,ruleset community; service:netbios-ssn; reference:url,attack.mitre.org/techniques/T1077; reference:url,msdn.microsoft.com/en-us/library/ee441910.aspx; reference:url,technet.microsoft.com/en-us/security/bulletin/MS17-010; classtype:attempted-recon; sid:42340; rev:4; )",
+          "rule_url": "https://www.snort.org/downloads/#rule-downloads",
+          "rule_source": "Snort registered user ruleset",
+          "rule_references": [
+            "https://attack.mitre.org/techniques/T1077",
+            "https://msdn.microsoft.com/en-us/library/ee441910.aspx",
+            "https://technet.microsoft.com/en-us/security/bulletin/MS17-010"
+          ],
+          "rule_id": "1:42340"
+        },
+        {
+          "rule_category": "protocol-command-decode",
+          "alert_severity": "low",
+          "rule_msg": "OS-WINDOWS Microsoft Windows SMB Trans2 OPEN2 unicode max_param_count underflow attempt",
+          "rule_raw": "alert tcp $EXTERNAL_NET any -> $HOME_NET [139,445] ( msg:\"OS-WINDOWS Microsoft Windows SMB Trans2 OPEN2 unicode max_param_count underflow attempt\"; flow:to_server,established; content:\"|00|\",depth 1; content:\"|FF|SMB2\",within 5,distance 3; byte_test:1,&,128,6,relative; pcre:\"/^.{27}/Rs\"; content:\"|00 00|\",within 2,distance 29; byte_test:2,<,30,-26,relative,little; metadata:policy max-detect-ips drop,policy security-ips drop; service:netbios-ssn; reference:cve,2008-4835; reference:url,technet.microsoft.com/en-us/security/bulletin/MS09-001; classtype:protocol-command-decode; sid:15213; rev:14; )",
+          "rule_url": "https://www.snort.org/downloads/#rule-downloads",
+          "rule_source": "Snort registered user ruleset",
+          "rule_references": [
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=2008-4835",
+            "https://technet.microsoft.com/en-us/security/bulletin/MS09-001"
+          ],
+          "rule_id": "1:15213"
+        },
+        {
+          "rule_category": "protocol-command-decode",
+          "alert_severity": "low",
+          "rule_msg": "OS-WINDOWS Microsoft Windows SMB Trans2 OPEN2 unicode param_count underflow attempt",
+          "rule_raw": "alert tcp $EXTERNAL_NET any -> $HOME_NET [139,445] ( msg:\"OS-WINDOWS Microsoft Windows SMB Trans2 OPEN2 unicode param_count underflow attempt\"; flow:to_server,established; content:\"|00|\",depth 1; content:\"|FF|SMB2\",within 5,distance 3; byte_test:1,&,128,6,relative; pcre:\"/^.{27}/Rs\"; content:\"|00 00|\",within 2,distance 29; byte_test:2,<,29,-12,relative,little; metadata:policy max-detect-ips drop,policy security-ips drop; service:netbios-ssn; reference:cve,2008-4835; reference:url,technet.microsoft.com/en-us/security/bulletin/MS09-001; classtype:protocol-command-decode; sid:15220; rev:17; )",
+          "rule_url": "https://www.snort.org/downloads/#rule-downloads",
+          "rule_source": "Snort registered user ruleset",
+          "rule_references": [
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=2008-4835",
+            "https://technet.microsoft.com/en-us/security/bulletin/MS09-001"
+          ],
+          "rule_id": "1:15220"
+        },
+        {
+          "rule_category": "Misc activity",
+          "alert_severity": "low",
+          "rule_msg": "ET SCAN Behavioral Unusual Port 445 traffic Potential Scan or Infection",
+          "rule_raw": "alert tcp $HOME_NET any -> any 445 (msg:\"ET SCAN Behavioral Unusual Port 445 traffic Potential Scan or Infection\"; flow:to_server; flags: S,12; threshold: type both, track by_src, count 70 , seconds 60; reference:url,doc.emergingthreats.net/2001569; classtype:misc-activity; sid:2001569; rev:15; metadata:created_at 2010_07_30, former_category SCAN, updated_at 2017_05_11;)",
+          "alert_context": [
+            {
+              "dest_port": 445,
+              "dest_ip": "144.190.175.75"
+            },
+            {
+              "dest_port": 445,
+              "dest_ip": "76.108.216.65"
+            }
+          ],
+          "rule_url": "https://rules.emergingthreats.net/",
+          "rule_source": "Proofpoint Emerging Threats Open",
+          "rule_references": [
+            "https://doc.emergingthreats.net/2001569"
+          ],
+          "rule_id": "1:2001569"
+        },
+        {
+          "rule_category": "misc-activity",
+          "alert_severity": "low",
+          "rule_msg": "PROTOCOL-ICMP Destination Unreachable Host Unreachable",
+          "rule_raw": "alert icmp $EXTERNAL_NET any -> $HOME_NET any ( msg:\"PROTOCOL-ICMP Destination Unreachable Host Unreachable\"; icode:1; itype:3; metadata:ruleset community; classtype:misc-activity; sid:399; rev:9; )",
+          "alert_context": [
+            {
+              "src_ip": "58.159.228.246"
+            }
+          ],
+          "rule_url": "https://www.snort.org/downloads/#rule-downloads",
+          "rule_source": "Snort registered user ruleset",
+          "rule_id": "1:399"
+        },
+        {
+          "rule_category": "misc-activity",
+          "alert_severity": "low",
+          "rule_msg": "PROTOCOL-ICMP Destination Unreachable Network Unreachable",
+          "rule_raw": "alert icmp $EXTERNAL_NET any -> $HOME_NET any ( msg:\"PROTOCOL-ICMP Destination Unreachable Network Unreachable\"; icode:0; itype:3; metadata:ruleset community; classtype:misc-activity; sid:401; rev:9; )",
+          "alert_context": [
+            {
+              "src_ip": "190.2.200.130"
+            }
+          ],
+          "rule_url": "https://www.snort.org/downloads/#rule-downloads",
+          "rule_source": "Snort registered user ruleset",
+          "rule_id": "1:401"
+        },
+        {
+          "rule_category": "protocol-command-decode",
+          "alert_severity": "low",
+          "rule_msg": "OS-WINDOWS Microsoft Windows SMB-DS Trans Max Param OS-WINDOWS attempt",
+          "rule_raw": "alert tcp $EXTERNAL_NET any -> $HOME_NET 445 ( msg:\"OS-WINDOWS Microsoft Windows SMB-DS Trans Max Param OS-WINDOWS attempt\"; flow:to_server,established; content:\"|00|\",depth 1; content:\"|FF|SMB%\",within 5,distance 3; byte_test:1,!&,128,6,relative; pcre:\"/^.{27}/Rs\"; byte_test:2,>,4376,5,relative,little; service:netbios-ssn; reference:bugtraq,13942; reference:cve,2005-1206; reference:nessus,18483; reference:url,technet.microsoft.com/en-us/security/bulletin/MS05-027; classtype:protocol-command-decode; sid:5730; rev:13; )",
+          "rule_url": "https://www.snort.org/downloads/#rule-downloads",
+          "rule_source": "Snort registered user ruleset",
+          "rule_references": [
+            "https://www.securityfocus.com/bid/13942",
+            "https://cve.mitre.org/cgi-bin/cvename.cgi?name=2005-1206",
+            "http://cgi.nessus.org/plugins/dump.php3?id=18483",
+            "https://technet.microsoft.com/en-us/security/bulletin/MS05-027"
+          ],
+          "rule_id": "1:5730"
+        },
+        {
+          "rule_category": "policy-violation",
+          "alert_severity": "info",
+          "rule_msg": "POLICY-OTHER SMBv1 protocol detection attempt",
+          "rule_raw": "alert tcp $EXTERNAL_NET any -> $HOME_NET [139,445] ( msg:\"POLICY-OTHER SMBv1 protocol detection attempt\"; flow:to_server,established; content:\"|FF|SMB|72 00 00 00 00|\"; content:\"|02|PC NETWORK PROGRAM 1.0\",fast_pattern,nocase; metadata:policy max-detect-ips drop; service:netbios-ssn; reference:url,github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/smb/smb1.rb; classtype:policy-violation; sid:44484; rev:5; )",
+          "rule_url": "https://www.snort.org/downloads/#rule-downloads",
+          "rule_source": "Snort registered user ruleset",
+          "rule_references": [
+            "https://github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/smb/smb1.rb"
+          ],
+          "rule_id": "1:44484"
+        },
+        {
+          "rule_category": "policy-violation",
+          "alert_severity": "info",
+          "rule_msg": "POLICY-OTHER SMBv1 protocol detection attempt",
+          "rule_raw": "alert tcp $EXTERNAL_NET any -> $HOME_NET [139,445] ( msg:\"POLICY-OTHER SMBv1 protocol detection attempt\"; flow:to_server,established; content:\"|FF|SMB|72 00 00 00 00|\"; content:\"|02|LANMAN1.0\",fast_pattern,nocase; service:netbios-ssn; reference:url,github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/smb/smb1.rb; classtype:policy-violation; sid:44485; rev:4; )",
+          "rule_url": "https://www.snort.org/downloads/#rule-downloads",
+          "rule_source": "Snort registered user ruleset",
+          "rule_references": [
+            "https://github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/smb/smb1.rb"
+          ],
+          "rule_id": "1:44485"
+        },
+        {
+          "rule_category": "policy-violation",
+          "alert_severity": "info",
+          "rule_msg": "POLICY-OTHER SMBv1 protocol detection attempt",
+          "rule_raw": "alert tcp $EXTERNAL_NET any -> $HOME_NET [139,445] ( msg:\"POLICY-OTHER SMBv1 protocol detection attempt\"; flow:to_server,established; content:\"|FF|SMB|72 00 00 00 00|\"; content:\"|02|Windows for Workgroups 3.1a\",fast_pattern,nocase; service:netbios-ssn; reference:url,github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/smb/smb1.rb; classtype:policy-violation; sid:44486; rev:4; )",
+          "rule_url": "https://www.snort.org/downloads/#rule-downloads",
+          "rule_source": "Snort registered user ruleset",
+          "rule_references": [
+            "https://github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/smb/smb1.rb"
+          ],
+          "rule_id": "1:44486"
+        },
+        {
+          "rule_category": "policy-violation",
+          "alert_severity": "info",
+          "rule_msg": "POLICY-OTHER SMBv1 protocol detection attempt",
+          "rule_raw": "alert tcp $EXTERNAL_NET any -> $HOME_NET [139,445] ( msg:\"POLICY-OTHER SMBv1 protocol detection attempt\"; flow:to_server,established; content:\"|FF|SMB|72 00 00 00 00|\"; content:\"|02|LM1.2X002\",fast_pattern,nocase; service:netbios-ssn; reference:url,github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/smb/smb1.rb; classtype:policy-violation; sid:44487; rev:4; )",
+          "rule_url": "https://www.snort.org/downloads/#rule-downloads",
+          "rule_source": "Snort registered user ruleset",
+          "rule_references": [
+            "https://github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/smb/smb1.rb"
+          ],
+          "rule_id": "1:44487"
+        },
+        {
+          "rule_category": "policy-violation",
+          "alert_severity": "info",
+          "rule_msg": "POLICY-OTHER SMBv1 protocol detection attempt",
+          "rule_raw": "alert tcp $EXTERNAL_NET any -> $HOME_NET [139,445] ( msg:\"POLICY-OTHER SMBv1 protocol detection attempt\"; flow:to_server,established; content:\"|FF|SMB|72 00 00 00 00|\"; content:\"|02|LANMAN2.1\",fast_pattern,nocase; service:netbios-ssn; reference:url,github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/smb/smb1.rb; classtype:policy-violation; sid:44488; rev:4; )",
+          "rule_url": "https://www.snort.org/downloads/#rule-downloads",
+          "rule_source": "Snort registered user ruleset",
+          "rule_references": [
+            "https://github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/smb/smb1.rb"
+          ],
+          "rule_id": "1:44488"
+        },
+        {
+          "rule_category": "policy-violation",
+          "alert_severity": "info",
+          "rule_msg": "POLICY-OTHER SMBv1 protocol detection attempt",
+          "rule_raw": "alert tcp $EXTERNAL_NET any -> $HOME_NET [139,445] ( msg:\"POLICY-OTHER SMBv1 protocol detection attempt\"; flow:to_server,established; content:\"|FF|SMB|72 00 00 00 00|\"; content:\"|02|NT LM 0.\",fast_pattern,nocase; service:netbios-ssn; reference:url,github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/smb/smb1.rb; classtype:policy-violation; sid:44489; rev:4; )",
+          "rule_url": "https://www.snort.org/downloads/#rule-downloads",
+          "rule_source": "Snort registered user ruleset",
+          "rule_references": [
+            "https://github.com/rapid7/metasploit-framework/blob/master/modules/auxiliary/scanner/smb/smb1.rb"
+          ],
+          "rule_id": "1:44489"
+        }
+      ],
+      "crowdsourced_yara_results": [
+        {
+          "ruleset_id": "000fd39f0d",
+          "rule_name": "WannaCry_Ransomware",
+          "ruleset_name": "crime_wannacry",
+          "description": "Detects WannaCry Ransomware",
+          "author": "Florian Roth (Nextron Systems) (with the help of binar.ly)",
+          "match_date": 1764116523,
+          "ruleset_version": "000fd39f0d|1d926845269a3ac8de0431da133950390b5cced3",
+          "source": "https://github.com/Neo23x0/signature-base"
+        },
+        {
+          "ruleset_id": "000fd39f0d",
+          "rule_name": "WannaCry_Ransomware_Gen",
+          "ruleset_name": "crime_wannacry",
+          "description": "Detects WannaCry Ransomware",
+          "author": "Florian Roth (Nextron Systems) (based on rule by US CERT)",
+          "match_date": 1764116523,
+          "ruleset_version": "000fd39f0d|1d926845269a3ac8de0431da133950390b5cced3",
+          "source": "https://github.com/Neo23x0/signature-base"
+        },
+        {
+          "ruleset_id": "0056142681",
+          "rule_name": "Win32_Ransomware_WannaCry",
+          "ruleset_name": "Win32.Ransomware.WannaCry",
+          "description": "Yara rule that detects WannaCry ransomware.",
+          "author": "ReversingLabs",
+          "match_date": 1764116523,
+          "ruleset_version": "0056142681|073879b10edf4bf4c9d95198b10a4728e2397b51",
+          "source": "https://github.com/reversinglabs/reversinglabs-yara-rules"
+        },
+        {
+          "description": "Detects imphash often found in malware samples (Zero hits with with search for 'imphash:x p:0' on Virustotal)",
+          "author": "Arnim Rupp (https://github.com/ruppde)",
+          "ruleset_name": "gen_imphash_detection",
+          "rule_name": "SUSP_Imphash_Mar23_2",
+          "ruleset_id": "000c8f1d6e",
+          "match_in_subfile": true,
+          "source": "https://github.com/Neo23x0/signature-base"
+        }
+      ],
+      "authentihash": "06dfd35bec986e145ce1fe3081616c2a302357cda92b6cafd8146a582e4ab515",
+      "signature_info": {
+        "description": "Microsoft® Disk Defragmenter",
+        "file version": "6.1.7601.17514 (win7sp1_rtm.101119-1850)",
+        "original name": "lhdfrgui.exe",
+        "product": "Microsoft® Windows® Operating System",
+        "internal name": "lhdfrgui.exe",
+        "copyright": "© Microsoft Corporation. All rights reserved."
+      },
+      "reputation": -32,
+      "sigma_analysis_stats": {
+        "high": 0,
+        "medium": 0,
+        "critical": 0,
+        "low": 1
+      },
+      "crowdsourced_ids_stats": {
+        "high": 10,
+        "info": 6,
+        "medium": 10,
+        "low": 6
+      },
+      "total_votes": {
+        "harmless": 2,
+        "malicious": 1
+      },
+      "last_analysis_stats": {
+        "malicious": 69,
+        "suspicious": 0,
+        "undetected": 3,
+        "harmless": 0,
+        "timeout": 0,
+        "confirmed-timeout": 0,
+        "failure": 0,
+        "type-unsupported": 4
+      },
+      "popular_threat_classification": {
+        "popular_threat_category": [
+          {
+            "value": "trojan",
+            "count": 27
+          },
+          {
+            "value": "ransomware",
+            "count": 22
+          }
+        ],
+        "popular_threat_name": [
+          {
+            "value": "wannacry",
+            "count": 10
+          },
+          {
+            "value": "wannacryptor",
+            "count": 9
+          },
+          {
+            "value": "wanna",
+            "count": 7
+          }
+        ],
+        "suggested_threat_label": "trojan.wannacry/wannacryptor"
+      },
+      "last_analysis_date": 1756285636,
+      "detectiteasy": {
+        "filetype": "PE32",
+        "values": [
+          {
+            "info": "EXE32",
+            "version": "6.0 (1720-9782)",
+            "type": "Compiler",
+            "name": "EP:Microsoft Visual C/C++"
+          },
+          {
+            "info": "C++",
+            "version": "12.00.9782",
+            "type": "Compiler",
+            "name": "Microsoft Visual C/C++"
+          },
+          {
+            "version": "6.00.8047",
+            "type": "Linker",
+            "name": "Microsoft Linker"
+          },
+          {
+            "version": "6.0",
+            "type": "Tool",
+            "name": "Visual Studio"
+          }
+        ]
+      },
+      "type_tag": "peexe",
+      "md5": "14131d9a5de9dd62ccc53a05d60b1a15",
+      "type_description": "Win32 EXE",
+      "last_submission_date": 1764116522,
+      "sigma_analysis_results": [
+        {
+          "match_context": [
+            {
+              "values": {
+                "EventID": "11",
+                "ProcessId": "6468",
+                "TargetFilename": "C:\\Windows\\tasksche.exe",
+                "RuleName": "EXE",
+                "CreationUtcTime": "1670240684",
+                "UtcTime": "1670240684",
+                "ProcessGuid": "{C784477D-D9AB-638D-820A-000000004700}",
+                "Image": "C:\\Users\\george\\Desktop\\lhdfrgui.exe"
+              }
+            }
+          ],
+          "rule_level": "low",
+          "rule_id": "b5386a23355681c43cfbd2f2ccfe4b16ed45324d0d7b5583487a9f302ee1e427",
+          "rule_source": "Sigma Integrated Rule Set (GitHub)",
+          "rule_title": "Creation of an Executable by an Executable",
+          "rule_description": "Detects the creation of an executable by another executable",
+          "rule_author": "frack113"
+        }
+      ],
+      "packers": {
+        "PEiD": "Microsoft Visual C++",
+        "Cyren": "rsrc"
+      },
+      "tags": [
+        "checks-network-adapters",
+        "checks-user-input",
+        "runtime-modules",
+        "long-sleeps",
+        "cve-2017-0147",
+        "peexe",
+        "detect-debug-environment",
+        "direct-cpu-clock-access",
+        "exploit",
+        "cve-2017-0144",
+        "cve-2005-1206",
+        "cve-2017-0146",
+        "cve-2008-4835",
+        "cve-2017-0143"
+      ],
+      "creation_date": 1290243788,
+      "pe_info": {
+        "timestamp": 1290243788,
+        "imphash": "9ecee117164e0b870a53dd187cdd7174",
+        "machine_type": 332,
+        "entry_point": 39446,
+        "resource_details": [
+          {
+            "lang": "ENGLISH US",
+            "chi2": 1156503.25,
+            "filetype": "DOS EXE",
+            "entropy": 6.325761795043945,
+            "sha256": "93b36942c6e1f89a7b3a040f5f79bba6d0ff44b0c2e3d1baed84e41faa503d8c",
+            "type": "R"
+          },
+          {
+            "lang": "ENGLISH US",
+            "chi2": 71429.77,
+            "filetype": "unknown",
+            "entropy": 3.532442808151245,
+            "sha256": "2f3fc51546ada848dfc8e775554c0de3689d6fae7ba4bf3d40e3c8dec68b277b",
+            "type": "RT_VERSION"
+          }
+        ],
+        "resource_langs": {
+          "ENGLISH US": 2
+        },
+        "resource_types": {
+          "R": 1,
+          "RT_VERSION": 1
+        },
+        "sections": [
+          {
+            "name": ".text",
+            "chi2": 514235.06,
+            "virtual_address": 4096,
+            "entropy": 6.13,
+            "raw_size": 36864,
+            "flags": "rx",
+            "virtual_size": 35786,
+            "md5": "c7613102e2ecec5dcefc144f83189153"
+          },
+          {
+            "name": ".rdata",
+            "chi2": 359720.38,
+            "virtual_address": 40960,
+            "entropy": 3.5,
+            "raw_size": 4096,
+            "flags": "r",
+            "virtual_size": 2456,
+            "md5": "d8037d744b539326c06e897625751cc9"
+          },
+          {
+            "name": ".data",
+            "chi2": 2564687.25,
+            "virtual_address": 45056,
+            "entropy": 6.1,
+            "raw_size": 159744,
+            "flags": "rw",
+            "virtual_size": 3164316,
+            "md5": "c3511637e3f1c112d4e2226bdb9a75e6"
+          },
+          {
+            "name": ".rsrc",
+            "chi2": 1550608.38,
+            "virtual_address": 3211264,
+            "entropy": 6.13,
+            "raw_size": 77824,
+            "flags": "r",
+            "virtual_size": 74912,
+            "md5": "e752d1fcd4c97a6ec7c3bf5d72e9330f"
+          }
+        ],
+        "compiler_product_versions": [
+          "[IMP] Windows Server 2003 SP1 DDK build 4035 count=11",
+          "[---] Unmarked objects count=91",
+          "[C++] VS98 (6.0) SP6 build 8804 count=1",
+          "[RES] VS98 (6.0) SP6 cvtres build 1736 count=1",
+          "id: 0xc, version: 7291 count=1",
+          "id: 0xe, version: 7299 count=4",
+          "id: 0xa, version: 8047 count=11",
+          "id: 0xb, version: 8047 count=1",
+          "id: 0x4, version: 8047 count=4"
+        ],
+        "rich_pe_header_hash": "09c088bc95bf88e6f4df4d6ca904611b",
+        "import_list": [
+          {
+            "library_name": "KERNEL32.dll",
+            "imported_functions": [
+              "CloseHandle",
+              "CreateFileA",
+              "EnterCriticalSection",
+              "ExitProcess",
+              "FindResourceA",
+              "GetCurrentThread",
+              "GetCurrentThreadId",
+              "GetFileSize",
+              "GetModuleFileNameA",
+              "GetModuleHandleA",
+              "GetModuleHandleW",
+              "GetProcAddress",
+              "GetStartupInfoA",
+              "GetTickCount",
+              "GlobalAlloc",
+              "GlobalFree",
+              "InitializeCriticalSection",
+              "InterlockedDecrement",
+              "InterlockedIncrement",
+              "LeaveCriticalSection",
+              "LoadResource",
+              "LocalAlloc",
+              "LocalFree",
+              "LockResource",
+              "MoveFileExA",
+              "QueryPerformanceCounter",
+              "QueryPerformanceFrequency",
+              "ReadFile",
+              "SizeofResource",
+              "Sleep",
+              "TerminateThread",
+              "WaitForSingleObject"
+            ]
+          },
+          {
+            "library_name": "ADVAPI32.dll",
+            "imported_functions": [
+              "ChangeServiceConfig2A",
+              "CloseServiceHandle",
+              "CreateServiceA",
+              "CryptAcquireContextA",
+              "CryptGenRandom",
+              "OpenSCManagerA",
+              "OpenServiceA",
+              "RegisterServiceCtrlHandlerA",
+              "SetServiceStatus",
+              "StartServiceA",
+              "StartServiceCtrlDispatcherA"
+            ]
+          },
+          {
+            "library_name": "WS2_32.dll",
+            "imported_functions": [
+              "closesocket",
+              "connect",
+              "htonl",
+              "htons",
+              "inet_addr",
+              "inet_ntoa",
+              "ioctlsocket",
+              "ntohl",
+              "recv",
+              "select",
+              "send",
+              "socket",
+              "WSAStartup"
+            ]
+          },
+          {
+            "library_name": "MSVCP60.dll",
+            "imported_functions": [
+              "??0_Lockit@std@@QAE@XZ",
+              "??1_Lockit@std@@QAE@XZ"
+            ]
+          },
+          {
+            "library_name": "iphlpapi.dll",
+            "imported_functions": [
+              "GetAdaptersInfo",
+              "GetPerAdapterInfo"
+            ]
+          },
+          {
+            "library_name": "WININET.dll",
+            "imported_functions": [
+              "InternetCloseHandle",
+              "InternetOpenA",
+              "InternetOpenUrlA"
+            ]
+          },
+          {
+            "library_name": "MSVCRT.dll",
+            "imported_functions": [
+              "??2@YAPAXI@Z",
+              "__CxxFrameHandler",
+              "__dllonexit",
+              "__getmainargs",
+              "__p___argc",
+              "__p__commode",
+              "__p__fmode",
+              "__set_app_type",
+              "__setusermatherr",
+              "_acmdln",
+              "_adjust_fdiv",
+              "_beginthreadex",
+              "_controlfp",
+              "_endthreadex",
+              "_except_handler3",
+              "_exit",
+              "_ftol",
+              "_initterm",
+              "_onexit",
+              "_stricmp",
+              "_XcptFilter",
+              "exit",
+              "free",
+              "rand",
+              "sprintf",
+              "srand",
+              "strncpy",
+              "time"
+            ]
+          }
+        ]
+      },
+      "type_extension": "exe",
+      "magika": "PEBIN",
+      "sha1": "c3309c4598bfe98d6e52cc93b19d2876eaccc538",
+      "names": [
+        "wannacry.exe",
+        "lhdfrgui.exe",
+        "wannacry-14131d9a5de9dd62ccc53a05d60b1a15.exe",
+        "ransom.exe.exe",
+        "wannacry.txt",
+        "wannacry.exe (2)",
+        "22222.exe",
+        "gfdsz.exe",
+        "notwannacry.exe",
+        "1031-c3309c4598bfe98d6e52cc93b19d2876eaccc538"
+      ],
+      "tlsh": "T11954C0066ACC80B4C056523594B71B79EAB2BC5E1634C64F3B9CCBB50FA37A0B579B07",
+      "ssdeep": "6144:HE9l9yeqIYVTH5DgSg8ajldktM0XXrEhypyhqHBuDp0Nc8Qs:HVbLgPluEhq0Dp",
+      "times_submitted": 136,
+      "last_analysis_results": {
+        "Bkav": {
+          "method": "blacklist",
+          "engine_name": "Bkav",
+          "engine_version": "2.0.0.1",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "W32.AIDetectMalware"
+        },
+        "Lionic": {
+          "method": "blacklist",
+          "engine_name": "Lionic",
+          "engine_version": "8.16",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "Trojan.Win32.Wanna.toNz"
+        },
+        "Elastic": {
+          "method": "blacklist",
+          "engine_name": "Elastic",
+          "engine_version": "4.0.222",
+          "engine_update": "20250826",
+          "category": "malicious",
+          "result": "malicious (high confidence)"
+        },
+        "MicroWorld-eScan": {
+          "method": "blacklist",
+          "engine_name": "MicroWorld-eScan",
+          "engine_version": "14.0.409.0",
+          "engine_update": "20250826",
+          "category": "malicious",
+          "result": "Trojan.Ransom.WannaCryptor.H"
+        },
+        "CTX": {
+          "method": "blacklist",
+          "engine_name": "CTX",
+          "engine_version": "2024.8.29.1",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "exe.trojan.wannacry"
+        },
+        "CAT-QuickHeal": {
+          "method": "blacklist",
+          "engine_name": "CAT-QuickHeal",
+          "engine_version": "22.00",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "Ransom.Zenshirsh.SL8"
+        },
+        "Skyhigh": {
+          "method": "blacklist",
+          "engine_name": "Skyhigh",
+          "engine_version": "v2021.2.0+4045",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "BehavesLike.Win32.Swrort.dh"
+        },
+        "ALYac": {
+          "method": "blacklist",
+          "engine_name": "ALYac",
+          "engine_version": "2.0.0.10",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "Trojan.Ransom.WannaCryptor"
+        },
+        "Cylance": {
+          "method": "blacklist",
+          "engine_name": "Cylance",
+          "engine_version": "3.0.0.0",
+          "engine_update": "20250813",
+          "category": "malicious",
+          "result": "Unsafe"
+        },
+        "Zillya": {
+          "method": "blacklist",
+          "engine_name": "Zillya",
+          "engine_version": "2.0.0.5432",
+          "engine_update": "20250826",
+          "category": "malicious",
+          "result": "Trojan.WannaCry.Win32.1"
+        },
+        "Sangfor": {
+          "method": "blacklist",
+          "engine_name": "Sangfor",
+          "engine_version": "2.22.3.0",
+          "engine_update": "20250825",
+          "category": "malicious",
+          "result": "Ransom.Win32.Wannacryptor_4.se2"
+        },
+        "K7AntiVirus": {
+          "method": "blacklist",
+          "engine_name": "K7AntiVirus",
+          "engine_version": "14.3.56831",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "Exploit ( 0050d7a31 )"
+        },
+        "Alibaba": {
+          "method": "blacklist",
+          "engine_name": "Alibaba",
+          "engine_version": "0.3.0.5",
+          "engine_update": "20190527",
+          "category": "malicious",
+          "result": "Ransom:Win32/WannaCry.398"
+        },
+        "K7GW": {
+          "method": "blacklist",
+          "engine_name": "K7GW",
+          "engine_version": "14.3.56832",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "Exploit ( 0050d7a31 )"
+        },
+        "CrowdStrike": {
+          "method": "blacklist",
+          "engine_name": "CrowdStrike",
+          "engine_version": "1.0",
+          "engine_update": "20231026",
+          "category": "malicious",
+          "result": "win/malicious_confidence_100% (W)"
+        },
+        "huorong": {
+          "method": "blacklist",
+          "engine_name": "huorong",
+          "engine_version": "1b6df00:1b6df00:09b01f3:09b01f3",
+          "engine_update": "20250826",
+          "category": "malicious",
+          "result": "TrojanDropper/Agent.mh"
+        },
+        "Baidu": {
+          "method": "blacklist",
+          "engine_name": "Baidu",
+          "engine_version": "1.0.0.2",
+          "engine_update": "20190318",
+          "category": "malicious",
+          "result": "Win32.Worm.Rbot.a"
+        },
+        "VirIT": {
+          "method": "blacklist",
+          "engine_name": "VirIT",
+          "engine_version": "9.5.1026",
+          "engine_update": "20250826",
+          "category": "malicious",
+          "result": "Trojan.Win32.Encoder.QXS"
+        },
+        "Symantec": {
+          "method": "blacklist",
+          "engine_name": "Symantec",
+          "engine_version": "1.22.0.0",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "Ransom.Wannacry"
+        },
+        "tehtris": {
+          "method": "blacklist",
+          "engine_name": "tehtris",
+          "engine_version": "v0.1.4",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "Generic.Malware"
+        },
+        "ESET-NOD32": {
+          "method": "blacklist",
+          "engine_name": "ESET-NOD32",
+          "engine_version": "31761",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "Win32/Exploit.CVE-2017-0147.A"
+        },
+        "APEX": {
+          "method": "blacklist",
+          "engine_name": "APEX",
+          "engine_version": "6.690",
+          "engine_update": "20250825",
+          "category": "malicious",
+          "result": "Malicious"
+        },
+        "TrendMicro-HouseCall": {
+          "method": "blacklist",
+          "engine_name": "TrendMicro-HouseCall",
+          "engine_version": "24.550.0.1002",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "Ransom_WCRY.SM2"
+        },
+        "Paloalto": {
+          "method": "blacklist",
+          "engine_name": "Paloalto",
+          "engine_version": "0.9.0.1003",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "generic.ml"
+        },
+        "ClamAV": {
+          "method": "blacklist",
+          "engine_name": "ClamAV",
+          "engine_version": "1.4.3.0",
+          "engine_update": "20250826",
+          "category": "malicious",
+          "result": "Win.Trojan.ShellcodeFindKernel32-1"
+        },
+        "Kaspersky": {
+          "method": "blacklist",
+          "engine_name": "Kaspersky",
+          "engine_version": "22.0.1.28",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "Trojan-Ransom.Win32.Wanna.m"
+        },
+        "BitDefender": {
+          "method": "blacklist",
+          "engine_name": "BitDefender",
+          "engine_version": "7.2",
+          "engine_update": "20250826",
+          "category": "malicious",
+          "result": "Trojan.Ransom.WannaCryptor.H"
+        },
+        "NANO-Antivirus": {
+          "method": "blacklist",
+          "engine_name": "NANO-Antivirus",
+          "engine_version": "1.0.170.26895",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "Trojan.Win32.Wanna.eovgam"
+        },
+        "SUPERAntiSpyware": {
+          "method": "blacklist",
+          "engine_name": "SUPERAntiSpyware",
+          "engine_version": "5.6.0.1032",
+          "engine_update": "20250826",
+          "category": "undetected",
+          "result": null
+        },
+        "Avast": {
+          "method": "blacklist",
+          "engine_name": "Avast",
+          "engine_version": "23.9.8494.0",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "Sf:WNCryLdr-A [Trj]"
+        },
+        "Tencent": {
+          "method": "blacklist",
+          "engine_name": "Tencent",
+          "engine_version": "1.0.0.1",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "Trojan.Win32.CobaltStrike.16001079"
+        },
+        "Emsisoft": {
+          "method": "blacklist",
+          "engine_name": "Emsisoft",
+          "engine_version": "2024.8.0.61147",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "Trojan.Ransom.WannaCryptor.H (B)"
+        },
+        "F-Secure": {
+          "method": "blacklist",
+          "engine_name": "F-Secure",
+          "engine_version": "18.10.1547.307",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "Trojan.TR/Patched.Gen2"
+        },
+        "DrWeb": {
+          "method": "blacklist",
+          "engine_name": "DrWeb",
+          "engine_version": "7.0.69.6040",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "Trojan.Encoder.11432"
+        },
+        "VIPRE": {
+          "method": "blacklist",
+          "engine_name": "VIPRE",
+          "engine_version": "6.0.0.35",
+          "engine_update": "20250826",
+          "category": "malicious",
+          "result": "Trojan.Ransom.WannaCryptor.H"
+        },
+        "TrendMicro": {
+          "method": "blacklist",
+          "engine_name": "TrendMicro",
+          "engine_version": "24.550.0.1002",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "Ransom_WCRY.SM2"
+        },
+        "McAfeeD": {
+          "method": "blacklist",
+          "engine_name": "McAfeeD",
+          "engine_version": "1.2.0.10275",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "ti!F60D07422A50"
+        },
+        "Trapmine": {
+          "method": "blacklist",
+          "engine_name": "Trapmine",
+          "engine_version": "4.0.4.0",
+          "engine_update": "20250819",
+          "category": "malicious",
+          "result": "malicious.high.ml.score"
+        },
+        "CMC": {
+          "method": "blacklist",
+          "engine_name": "CMC",
+          "engine_version": "2.4.2022.1",
+          "engine_update": "20250827",
+          "category": "undetected",
+          "result": null
+        },
+        "Sophos": {
+          "method": "blacklist",
+          "engine_name": "Sophos",
+          "engine_version": "3.1.2.0",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "Mal/EncPk-ACE"
+        },
+        "Ikarus": {
+          "method": "blacklist",
+          "engine_name": "Ikarus",
+          "engine_version": "6.4.16.0",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "Exploit.CVE-2017-0147"
+        },
+        "GData": {
+          "method": "blacklist",
+          "engine_name": "GData",
+          "engine_version": "GD:27.41572AVA:64.29721",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "Win32.Trojan-Ransom.WannaCry.K"
+        },
+        "Jiangmin": {
+          "method": "blacklist",
+          "engine_name": "Jiangmin",
+          "engine_version": "16.0.100",
+          "engine_update": "20250826",
+          "category": "malicious",
+          "result": "Trojan.WanaCry.i"
+        },
+        "Webroot": {
+          "method": "blacklist",
+          "engine_name": "Webroot",
+          "engine_version": "1.9.0.8",
+          "engine_update": "20250227",
+          "category": "malicious",
+          "result": "W32.Ransom.Wannacry"
+        },
+        "Google": {
+          "method": "blacklist",
+          "engine_name": "Google",
+          "engine_version": "1756281739",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "Detected"
+        },
+        "Avira": {
+          "method": "blacklist",
+          "engine_name": "Avira",
+          "engine_version": "8.3.3.22",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "TR/Patched.Gen2"
+        },
+        "Varist": {
+          "method": "blacklist",
+          "engine_name": "Varist",
+          "engine_version": "6.6.1.3",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "W32/Swrort.B.gen!Eldorado"
+        },
+        "Antiy-AVL": {
+          "method": "blacklist",
+          "engine_name": "Antiy-AVL",
+          "engine_version": "3.0",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "Trojan[Ransom]/Win32.Wanna"
+        },
+        "Kingsoft": {
+          "method": "blacklist",
+          "engine_name": "Kingsoft",
+          "engine_version": "None",
+          "engine_update": "20250826",
+          "category": "malicious",
+          "result": "malware.kb.a.1000"
+        },
+        "Gridinsoft": {
+          "method": "blacklist",
+          "engine_name": "Gridinsoft",
+          "engine_version": "1.0.223.174",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "Ransom.Win32.WannaCrypt.vl!s1"
+        },
+        "Xcitium": {
+          "method": "blacklist",
+          "engine_name": "Xcitium",
+          "engine_version": "37990",
+          "engine_update": "20250826",
+          "category": "malicious",
+          "result": "TrojWare.Win32.WannaCry.jet@714um4"
+        },
+        "Arcabit": {
+          "method": "blacklist",
+          "engine_name": "Arcabit",
+          "engine_version": "2025.0.0.23",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "Trojan.Ransom.WannaCryptor.H"
+        },
+        "ViRobot": {
+          "method": "blacklist",
+          "engine_name": "ViRobot",
+          "engine_version": "2014.3.20.0",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "Trojan.Win32.WannaCry.3723264.A"
+        },
+        "ZoneAlarm": {
+          "method": "blacklist",
+          "engine_name": "ZoneAlarm",
+          "engine_version": "6.19-108463087",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "Mal/Wanna-A"
+        },
+        "Microsoft": {
+          "method": "blacklist",
+          "engine_name": "Microsoft",
+          "engine_version": "1.1.25070.4",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "Ransom:Win32/WannaCrypt!pz"
+        },
+        "Cynet": {
+          "method": "blacklist",
+          "engine_name": "Cynet",
+          "engine_version": "4.0.3.4",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "Malicious (score: 100)"
+        },
+        "AhnLab-V3": {
+          "method": "blacklist",
+          "engine_name": "AhnLab-V3",
+          "engine_version": "3.28.0.10568",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "Trojan/Win32.WannaCryptor.R200579"
+        },
+        "Acronis": {
+          "method": "blacklist",
+          "engine_name": "Acronis",
+          "engine_version": "1.2.0.121",
+          "engine_update": "20240328",
+          "category": "undetected",
+          "result": null
+        },
+        "VBA32": {
+          "method": "blacklist",
+          "engine_name": "VBA32",
+          "engine_version": "5.4.0",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "TrojanRansom.Wanna"
+        },
+        "TACHYON": {
+          "method": "blacklist",
+          "engine_name": "TACHYON",
+          "engine_version": "2025-08-27.02",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "Ransom/W32.WannaCry.Zen"
+        },
+        "Malwarebytes": {
+          "method": "blacklist",
+          "engine_name": "Malwarebytes",
+          "engine_version": "3.1.0.150",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "CVE20170147.Trojan.Exploit.DDS"
+        },
+        "Panda": {
+          "method": "blacklist",
+          "engine_name": "Panda",
+          "engine_version": "4.6.4.2",
+          "engine_update": "20250826",
+          "category": "malicious",
+          "result": "Trj/RansomCrypt.I"
+        },
+        "Zoner": {
+          "method": "blacklist",
+          "engine_name": "Zoner",
+          "engine_version": "2.2.2.0",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "Trojan.Win32.80326"
+        },
+        "Rising": {
+          "method": "blacklist",
+          "engine_name": "Rising",
+          "engine_version": "25.0.0.28",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "Exploit.EternalBlue!1.AAED (CLASSIC)"
+        },
+        "Yandex": {
+          "method": "blacklist",
+          "engine_name": "Yandex",
+          "engine_version": "5.5.2.24",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "Trojan.GenAsa!VW7HnU9046M"
+        },
+        "TrellixENS": {
+          "method": "blacklist",
+          "engine_name": "TrellixENS",
+          "engine_version": "6.0.6.653",
+          "engine_update": "20250826",
+          "category": "malicious",
+          "result": "Ransom-WannaCry!14131D9A5DE9"
+        },
+        "SentinelOne": {
+          "method": "blacklist",
+          "engine_name": "SentinelOne",
+          "engine_version": "25.1.1.1",
+          "engine_update": "20250114",
+          "category": "malicious",
+          "result": "Static AI - Malicious PE"
+        },
+        "MaxSecure": {
+          "method": "blacklist",
+          "engine_name": "MaxSecure",
+          "engine_version": "1.0.0.1",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "Trojan-Ransom.Win32.Wanna.m"
+        },
+        "Fortinet": {
+          "method": "blacklist",
+          "engine_name": "Fortinet",
+          "engine_version": "7.0.30.0",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "W32/WannaCryptor.H!tr.ransom"
+        },
+        "AVG": {
+          "method": "blacklist",
+          "engine_name": "AVG",
+          "engine_version": "23.9.8494.0",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "Sf:WNCryLdr-A [Trj]"
+        },
+        "DeepInstinct": {
+          "method": "blacklist",
+          "engine_name": "DeepInstinct",
+          "engine_version": "5.0.0.8",
+          "engine_update": "20250827",
+          "category": "malicious",
+          "result": "MALICIOUS"
+        },
+        "alibabacloud": {
+          "method": "blacklist",
+          "engine_name": "alibabacloud",
+          "engine_version": "2.2.0",
+          "engine_update": "20250321",
+          "category": "malicious",
+          "result": "Backdoor:Win/meterpreter.A"
+        },
+        "Avast-Mobile": {
+          "method": "blacklist",
+          "engine_name": "Avast-Mobile",
+          "engine_version": "250827-00",
+          "engine_update": "20250827",
+          "category": "type-unsupported",
+          "result": null
+        },
+        "SymantecMobileInsight": {
+          "method": "blacklist",
+          "engine_name": "SymantecMobileInsight",
+          "engine_version": "2.0",
+          "engine_update": "20250124",
+          "category": "type-unsupported",
+          "result": null
+        },
+        "BitDefenderFalx": {
+          "method": "blacklist",
+          "engine_name": "BitDefenderFalx",
+          "engine_version": "2.0.936",
+          "engine_update": "20250416",
+          "category": "type-unsupported",
+          "result": null
+        },
+        "Trustlook": {
+          "method": "blacklist",
+          "engine_name": "Trustlook",
+          "engine_version": "1.0",
+          "engine_update": "20250827",
+          "category": "type-unsupported",
+          "result": null
+        }
+      },
+      "trid": [
+        {
+          "file_type": "Win32 Executable MS Visual C++ (generic)",
+          "probability": 37.8
+        },
+        {
+          "file_type": "Microsoft Visual C++ compiled executable (generic)",
+          "probability": 20.0
+        },
+        {
+          "file_type": "Win64 Executable (generic)",
+          "probability": 12.7
+        },
+        {
+          "file_type": "Win32 Dynamic Link Library (generic)",
+          "probability": 7.9
+        },
+        {
+          "file_type": "Win16 NE executable (generic)",
+          "probability": 6.1
+        }
+      ],
+      "meaningful_name": "lhdfrgui.exe",
+      "type_tags": [
+        "executable",
+        "windows",
+        "win32",
+        "pe",
+        "peexe"
+      ],
+      "last_modification_date": 1764116586,
+      "sandbox_verdicts": {
+        "Zenbox": {
+          "category": "malicious",
+          "confidence": 68,
+          "sandbox_name": "Zenbox",
+          "malware_classification": [
+            "MALWARE",
+            "RANSOM",
+            "TROJAN",
+            "EVADER"
+          ],
+          "malware_names": [
+            "Metasploit",
+            "Wannacry"
+          ]
+        }
+      },
+      "sigma_analysis_summary": {
+        "Sigma Integrated Rule Set (GitHub)": {
+          "high": 0,
+          "medium": 0,
+          "critical": 0,
+          "low": 1
+        }
+      },
+      "sha256": "f60d07422a50e62bf3b92ab406b83b26fcd203a1e77ae2a9a6c239766f65eb8f",
+      "magic": "PE32 executable (GUI) Intel 80386, for MS Windows"
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "sections": [
+    "general",
+    "analysis"
+  ],
+  "type": "sha256",
+  "type_title": "FileHash-SHA256",
+  "indicator": "f60d07422a50e62bf3b92ab406b83b26fcd203a1e77ae2a9a6c239766f65eb8f",
+  "validation": [],
+  "base_indicator": {
+    "id": 2237731726,
+    "indicator": "f60d07422a50e62bf3b92ab406b83b26fcd203a1e77ae2a9a6c239766f65eb8f",
+    "type": "FileHash-SHA256",
+    "title": "",
+    "description": "",
+    "content": "",
+    "access_type": "public",
+    "access_reason": ""
+  },
+  "pulse_info": {
+    "count": 0,
+    "pulses": [],
+    "references": [],
+    "related": {
+      "alienvault": {
+        "adversary": [],
+        "malware_families": [],
+        "industries": []
+      },
+      "other": {
+        "adversary": [],
+        "malware_families": [],
+        "industries": []
+      }
+    }
+  },
+  "false_positive": []
+}

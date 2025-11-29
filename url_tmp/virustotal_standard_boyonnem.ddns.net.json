@@ -1,0 +1,169 @@
+{
+  "indicator": "boyonnem.ddns.net",
+  "threat_tags": {
+    "tags": [
+      "alphaMountain.ai: malicious",
+      "Antiy-AVL: malicious",
+      "BitDefender: malware",
+      "CRDF: malicious",
+      "G-Data: malware",
+      "Sophos: malicious"
+    ],
+    "categories": [
+      "alphaMountain.ai",
+      "Sophos",
+      "Forcepoint ThreatSeeker"
+    ],
+    "campaigns": []
+  },
+  "subdomains": {
+    "siblings": [
+      "n8n-app.ddns.net",
+      "zivan.ddns.net",
+      "ucstestapps.ddns.net",
+      "ngkcloud.ddns.net",
+      "searchit.ddns.net",
+      "steelplus.ddns.net",
+      "rgdthte.ddns.net",
+      "tap-com.ddns.net",
+      "gmlf-dev.ddns.net",
+      "xiezhi.ddns.net",
+      "bonus.ddns.net",
+      "click.ddns.net",
+      "clockplusapi.ddns.net",
+      "appcorporative.ddns.net",
+      "mhtj.ddns.net",
+      "work9987.ddns.net",
+      "lbdsvr01.ddns.net",
+      "4logicaldocument.ddns.net",
+      "seturan.ddns.net",
+      "torressystemes.ddns.net",
+      "bakerscrackerbox.ddns.net",
+      "clockplusaspi.ddns.net",
+      "joyleaf.ddns.net",
+      "romanlp.ddns.net",
+      "strongbow25.ddns.net",
+      "sistecgolfo.ddns.net",
+      "dtpman.ddns.net",
+      "shaolin-navidrome.ddns.net",
+      "nextcloudprivada.ddns.net",
+      "sudamall.ddns.net",
+      "recebe.ddns.net",
+      "sufenta.ddns.net",
+      "random1293jfmdddgas.ddns.net",
+      "poohvyni.ddns.net",
+      "etadmininfra.ddns.net",
+      "g3ck1.ddns.net",
+      "ptncloud.ddns.net",
+      "bluegen-smf.ddns.net",
+      "ifl.ddns.net",
+      "multiserviciosfaro.ddns.net",
+      "0-0.ddns.net",
+      "0-11.ddns.net",
+      "0-12-hosped.ddns.net",
+      "0-9.ddns.net",
+      "00-00.ddns.net",
+      "00-unicafarma-escritorio.ddns.net",
+      "000.ddns.net",
+      "0000.ddns.net",
+      "00000.ddns.net",
+      "000000.ddns.net",
+      "000000000.ddns.net",
+      "00000000000.ddns.net",
+      "00000001h.ddns.net",
+      "00000033.ddns.net",
+      "0000004hh.ddns.net",
+      "00000123.ddns.net",
+      "0000055555.ddns.net",
+      "00001111.ddns.net",
+      "00001240-zc.ddns.net",
+      "000051139701.ddns.net",
+      "000051139707.ddns.net",
+      "000051139708.ddns.net",
+      "000051139711.ddns.net",
+      "000051139714.ddns.net",
+      "000051139715.ddns.net",
+      "000051139717.ddns.net",
+      "000055323115.ddns.net",
+      "0001002230.ddns.net",
+      "000111.ddns.net",
+      "0001drwsystems.ddns.net",
+      "0001h.ddns.net",
+      "0001new.ddns.net",
+      "0003new.ddns.net",
+      "0004h.ddns.net",
+      "0005h.ddns.net",
+      "0006hf.ddns.net",
+      "0007.ddns.net",
+      "000853.ddns.net",
+      "000888.ddns.net",
+      "0009bd02467e.ddns.net"
+    ],
+    "count": 80
+  },
+  "related_samples": {
+    "extracted_files": [],
+    "files_referring": [],
+    "contacted_files": [
+      "1d83e856c66f3b611ad26b2807d0c4925179f62fa87053a96f27e4da6245e8a3",
+      "26c46fdf058abdf2d4cad1d8bcca0d686c1aa5567e4d246dca64b95decdc7ba1",
+      "27d5f946cb82885288ed5918385c0fe3b76f81632c6d5b8530302cce2cccef82",
+      "7ed8c89a639c5dba05a2123bfeeb544c88909e5d92e17d81696bb5ae7020def9",
+      "efc159d93a57e03f1fe77006c19730719a3db8ba18079cd3f3625845f968b89f"
+    ],
+    "downloaded_files": []
+  },
+  "passive_dns": {
+    "resolutions": [
+      "105.112.96.234boyonnem.ddns.net",
+      "103.106.250.123boyonnem.ddns.net",
+      "197.210.45.15boyonnem.ddns.net",
+      "66.185.166.11ddns.net",
+      "158.247.7.206ddns.net",
+      "8.23.224.108ddns.net"
+    ],
+    "ips": [
+      "105.112.96.234",
+      "103.106.250.123",
+      "197.210.45.15",
+      "66.185.166.11",
+      "158.247.7.206",
+      "8.23.224.108"
+    ],
+    "domains": [
+      "google-site-verification=DK2y7vkh-jVUY84NzbLEGPSuj2qOtzwDx8NuHLjRUac",
+      "v=spf1 include:no-ip.com -all"
+    ]
+  },
+  "whois": {
+    "registrar": "Vitalwerks Internet Solutions, LLC / No-IP.com",
+    "creation_date": 993744299,
+    "registrant_phone": "8690b4395a2d3d27",
+    "registrant_phone_ext": null,
+    "registrant_email": "c215fc66323f439as@no-ip.com",
+    "registrant_name": "c3605d7ba7ae9750",
+    "registrant_organization": "fadb50953e6c6995",
+    "registrant_city": "acac3e3520916b3a",
+    "registrant_country": "US",
+    "expiration_date": "2027-06-28T16:04:59Z",
+    "name_servers": [
+      "NF1.NO-IP.COM",
+      "NF2.NO-IP.COM",
+      "NF3.NO-IP.COM",
+      "NF4.NO-IP.COM"
+    ]
+  },
+  "certificate": {
+    "subject_cn": null,
+    "issuer": null,
+    "serial_number": null,
+    "fingerprint_sha256": null,
+    "valid_not_before": null,
+    "valid_not_after": null,
+    "signature_algorithm": null,
+    "subject_alternative_names": []
+  },
+  "source_engines": [
+    "VirusTotal"
+  ]
+}

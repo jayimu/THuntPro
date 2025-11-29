@@ -1,0 +1,47 @@
+{
+  "indicator": "121.41.39.145",
+  "threat_tags": {
+    "tags": [],
+    "categories": [],
+    "campaigns": []
+  },
+  "subdomains": {
+    "siblings": [],
+    "count": 0
+  },
+  "related_samples": {
+    "extracted_files": [],
+    "files_referring": [],
+    "contacted_files": [],
+    "downloaded_files": []
+  },
+  "passive_dns": {
+    "resolutions": [],
+    "ips": [],
+    "domains": []
+  },
+  "whois": {
+    "registrar": null,
+    "creation_date": null,
+    "registrant_phone": null,
+    "registrant_phone_ext": null,
+    "registrant_email": null,
+    "registrant_name": null,
+    "registrant_organization": null,
+    "registrant_city": null,
+    "registrant_country": null,
+    "expiration_date": null,
+    "name_servers": []
+  },
+  "certificate": {
+    "subject_cn": null,
+    "issuer": null,
+    "serial_number": null,
+    "fingerprint_sha256": null,
+    "valid_not_before": null,
+    "valid_not_after": null,
+    "signature_algorithm": null,
+    "subject_alternative_names": []
+  },
+  "source_engines": []
+}
